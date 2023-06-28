@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{message}}</h1>
+
+        <h3>{{buttonText}} {{count}}</h3>
+        <button @click="counter">Купить</button>
+        <button v-if="this.isBought" @click="increase">+</button>
+        <button v-if="this.isBought" @click="decrease">-</button>
+        <button v-if="this.isBought" @click="deleteProduct">Удалить</button>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello, Vue!',
+                count: 0,
+                isBought: false,
+                buttonText: 'Товаров в корзине'
+            },
+            methods: {
+                counter() {
+                    if (!this.isBought) {
+                        this.count++
+                        this.isBought = true,
+                            this.buttonText = 'Товар в корзине'
+                    }
+                },
+
+                increase() {
+                    this.count++
+                },
+
+                decrease() {
+                    if (this.count > 0) {
+                        this.count--
+                    }
+                },
+
+                deleteProduct() {
+                    this.buttonText = "Товаров в корзине "
+                    this.isBought = false
+                    this.count = 0
+                }
+
+
+
+
+
+
+
+            }
+        });
+    </script>
+</body>
+
+</html>

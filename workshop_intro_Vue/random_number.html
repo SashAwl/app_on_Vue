@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        button {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="generatedNumber">{{number}}</button>
+        <h5>{{answerText}}</h3>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                number: 'Сгенерировать случайное число',
+                answer: false,
+                answerText: 'Ответ будет здесь'
+            },
+            methods: {
+                generatedNumber() {
+                    this.number = Math.floor(Math.random() * 10) + 1;
+
+                    if (this.number < 5) {
+                        this.answerText = 'Число меньше 5'
+                    } else if (this.number <= 9) {
+                        this.answerText = 'Число от 5 до 9'
+                    } else {
+                        this.answerText = 'Число равно 10'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

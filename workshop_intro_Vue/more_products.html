@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Больше товаров</h3>
+        <button @click="addMoreProducts">{{text}}</button>
+        <br>
+        <button v-show="isOpen" v-for="button in buttons" :key="button.id">{{button.btnText}}</button>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isOpen: false,
+                text: 'Показать еще',
+                buttons: [
+                    { id: 1, btnText: 'Добавить товар', isBought: false },
+                    { id: 2, btnText: 'Добавить товар', isBought: false },
+                    { id: 3, btnText: 'Добавить товар', isBought: false },
+                    { id: 4, btnText: 'Добавить товар', isBought: false },
+                ]
+            },
+
+            methods: {
+                addMoreProducts() {
+                    if (this.isOpen) {
+                        this.isOpen = !this.isOpen;
+                        this.text = 'Показать еще'
+                    }
+                    else {
+                        this.isOpen = !this.isOpen;
+                        this.text = 'Скрыть'
+                    }
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
