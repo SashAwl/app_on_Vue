@@ -5,10 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+    <style>
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 100px;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 62px;
+            border: 1px solid #E7E7E7;
+            box-shadow: 0px 10px 30px 0px rgba(255, 255, 255, 0.25);
+        }
+    </style>
 </head>
 
 <body>
+    <div id="app">
+        <div class="head">
+            <h2>Products</h2>
+            <div>
+                <svg @click="products.sort((a, b) => a.price > b.price ? 1 : -1)" xmlns="http://www.w3.org/2000/svg"
+                    height="1.25em"
+                    viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                        d="M151.6 42.4C145.5 35.8 137 32 128 32s-17.5 3.8-23.6 10.4l-88 96c-11.9 13-11.1 33.3 2 45.2s33.3 11.1 45.2-2L96 146.3V448c0 17.7 14.3 32 32 32s32-14.3 32-32V146.3l32.4 35.4c11.9 13 32.2 13.9 45.2 2s13.9-32.2 2-45.2l-88-96zM320 480h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H320c-17.7 0-32 14.3-32 32s14.3 32 32 32zm0-128h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H320c-17.7 0-32 14.3-32 32s14.3 32 32 32zm0-128H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H320c-17.7 0-32 14.3-32 32s14.3 32 32 32zm0-128H544c17.7 0 32-14.3 32-32s-14.3-32-32-32H320c-17.7 0-32 14.3-32 32s14.3 32 32 32z" />
+                </svg>
+                <svg @click="products.sort((a, b) => a.price < b.price ? 1 : -1)" xmlns="http://www.w3.org/2000/svg"
+                    height="1.25em"
+                    viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                        d="M151.6 469.6C145.5 476.2 137 480 128 480s-17.5-3.8-23.6-10.4l-88-96c-11.9-13-11.1-33.3 2-45.2s33.3-11.1 45.2 2L96 365.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V365.7l32.4-35.4c11.9-13 32.2-13.9 45.2-2s13.9 32.2 2 45.2l-88 96zM320 480c-17.7 0-32-14.3-32-32s14.3-32 32-32h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H320zm0-128c-17.7 0-32-14.3-32-32s14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H320zm0-128c-17.7 0-32-14.3-32-32s14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H320zm0-128c-17.7 0-32-14.3-32-32s14.3-32 32-32H544c17.7 0 32 14.3 32 32s-14.3 32-32 32H320z" />
+                </svg>
+            </div>
+        </div>
+        <div class="products">
+            <div class="product" v-for="product in products" :key="product.id">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.price }} руб.</p>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                products: [
+                    { id: 1, name: 'skirt', price: 500 },
+                    { id: 2, name: 't-shirt', price: 700 },
+                    { id: 3, name: 'waistcoat', price: 1200 },
+                    { id: 4, name: 'bag', price: 2000 },
+                    { id: 5, name: 'jacket', price: 1800 },
+                    { id: 6, name: 'tie', price: 600 },
+                    { id: 7, name: 'boots', price: 3500 },
+                    { id: 8, name: 'snikers', price: 5000 },
+                ]
+            }
+        })
+    </script>
 </body>
 
 </html>
