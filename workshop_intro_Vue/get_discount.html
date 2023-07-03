@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #eee;
+            width: 400px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="product">
+            <img :src="product.url" width="300px" alt="">
+            <h3 class="name">{{ product.name }}</h3>
+            <h4 class="price">{{ product.price }}</h4>
+        </div>
+        <button @click="getDiscount">Получить скидку</button>
+
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                product: {
+                    name: 'Bananas',
+                    price: 120,
+                    url: 'https://post.healthline.com/wp-content/uploads/2020/08/banana-pink-background-thumb-1-732x549.jpg'
+                }
+            },
+            methods: {
+                getDiscount() {
+                    this.product.price = (this.product.price * 0.8).toFixed(2)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

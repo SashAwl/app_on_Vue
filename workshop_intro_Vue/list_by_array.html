@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="reverse">{{ textButton }}</button>
+
+        <h3>Список по массиву</h3>
+        <ul>
+            <li v-for="item in listItem" :key="item.id">Элемент списка {{item}}</li>
+        </ul>
+        <button @click="addLi">Добавить</button>
+
+
+        <h3> Список по массиву объектов с функцией удаления по щелчку</h3>
+        <ul>
+            <li v-for="item in listObj" :key="item.id" v-if="item.isExists" @click="item.isExists = !item.isExists">
+                {{item.text}} </li>
+        </ul>
+        <button @click="addLiObj">Добавить</button>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isReverse: false,
+                textButton: 'Перевернуть',
+                listItem: [1, 2, 3, 4],
+                listObj: [
+                    { text: 'Элемент списка', isExists: true },
+                    { text: 'Элемент списка', isExists: true },
+                    { text: 'Элемент списка', isExists: true },
+                    { text: 'Элемент списка', isExists: true }
+                ],
+            },
+
+            methods: {
+                reverse() {
+                    this.textButton = this.textButton.split('').reverse().join('')
+                },
+
+                addLi() {
+                    this.listItem.push(this.listItem.length + 1)
+                },
+
+                addLiObj() {
+                    this.listObj.push({ text: 'Новый элемент списка', isExists: true })
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

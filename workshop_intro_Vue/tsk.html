@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        * {
+            margin: 10px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="form">
+            <h4>Имя:</h4>
+            <input type="text" placeholder="Введите имя" v-model="user.name">
+            <h4>Фамилия:</h4>
+            <input type="text" placeholder="Введите фамилию" v-model="user.surname">
+            <h4>Контакты:</h4>
+            <input type="text" placeholder="Введите email" v-model="user.email"><br>
+            <input type="text" v-if="isOpenNewContacts" placeholder="Введите новый контакт" v-model="user.newContacts">
+            <button @click="isOpenNewContacts=!isOpenNewContacts" v-if="!isOpenNewContacts">Добавить
+                контакт</button><br>
+            <button @click="addContacts">Сохранить</button>
+        </div>
+        <p>{{ stringDataUser }}</p>
+
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isOpenNewContacts: false,
+                stringDataUser: '',
+                user: {
+                    name: '',
+                    surname: '',
+                    email: '',
+                    newContacts: 'Not',
+                },
+                users: []
+            },
+            methods: {
+                addContacts() {
+                    try {
+                        Object.values(this.user).forEach((key) => {
+                            if (!key) {
+                                this.stringDataUser = 'Пустое поле недопустимо';
+                                throw new Error('Пустое поле недопустимо');
+                            }
+                        })
+
+                        this.stringDataUser = `
+                            ${this.user.name} ${this.user.surname} - 
+                            ${this.user.email}. ${this.user.newContacts != 'Not' ? `Тел: ${this.user.newContacts}` : ''} `
+
+                        this.users.push(this.stringDataUser)
+
+                    } catch (error) {
+                        console.log(error)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
