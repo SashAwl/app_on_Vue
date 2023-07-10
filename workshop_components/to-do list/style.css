@@ -1,0 +1,93 @@
+.center {
+    padding-left: calc(50% - 580px);
+    padding-right: calc(50% - 580px);
+}
+
+.back {
+    background-color: #b7a9a9;
+}
+
+.top {
+    align-items: center;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.top svg {
+    background-color: white;
+    padding: 7px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.top path {
+    fill: grey;
+}
+
+.heading {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.listItem {
+    margin: 15px 0;
+    background-color: #faf5f3;
+    border-radius: 30px;
+    padding-bottom: 30px;
+}
+
+.titleLine {
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.inputTitle {
+    display: block;
+    height: 19px;
+    margin: 19px 0;
+}
+
+.titleLine svg {
+    cursor: pointer;
+}
+
+.titleEdit {
+    display: flex;
+    align-items: center;
+    gap: 15px
+}
+
+.listText {
+    padding: 0 80px;
+}
+
+.to-do-list {
+    list-style-type: none;
+}
+
+.to-do-list li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.to-do-list p {
+    margin: 10px 0;
+}
+
+.crossed-out {
+    text-decoration: line-through;
+}
+
+.icons {
+    display: flex;
+}
+
+.icons svg~svg {
+    padding-left: 20px;
+}
