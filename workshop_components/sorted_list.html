@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .buttons {
+            display: flex;
+            gap: 30px;
+            padding: 30px 0;
+        }
+
+        .products .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .products .cards_index_padding_top {
+            margin-top: 64px;
+        }
+
+        .products .card {
+            background-color: #F8F8F8;
+            position: relative;
+        }
+
+        .products .card-heading {
+            margin-top: 25px;
+            margin-bottom: 13px;
+            text-transform: uppercase;
+            font-size: 13px;
+            line-height: 16px;
+            color: #000000;
+        }
+
+        .products .card-img {
+            width: 100%;
+            display: block;
+        }
+
+        .products .card-price {
+            font-size: 16px;
+            line-height: 19px;
+            color: #F16D7F;
+        }
+
+        .products .card-text {
+            padding: 0 16px;
+        }
+
+        .products .card_back {
+            display: none;
+            width: 100%;
+            align-items: stretch;
+            background: rgba(58, 56, 56, 0.86);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .products .card_button {
+            display: flex;
+            padding: 13px 16px 13px 14px;
+            border: 1px solid #FFFFFF;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            background: rgba(58, 56, 56, 0.01);
+            margin: 50% auto;
+            cursor: pointer;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform;
+        }
+
+        .products .card-img-button {
+            width: inherit;
+            position: relative;
+        }
+
+        .products .card_button span {
+            display: block;
+            padding-left: 11px;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 14px;
+            line-height: 17px;
+        }
+
+        .products .text {
+            font-size: 14px;
+            line-height: 17px;
+            color: #9F9F9F;
+        }
+
+        .products__heading+.text {
+            text-align: center;
+        }
+
+        .products .card_button img {
+            width: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="products">
+        <div class="buttons">
+            <button @click="sortedUp()">По возрастанию</button>
+            <button @click="sortedDown()">По убыванию</button>
+        </div>
+        <div class="cards">
+            <product :price="product.price" :name="product.name" :src="product.srcImg" v-for="product in products"
+                :key="product.id"></product>
+        </div>
+    </div>
+
+    <script>
+        Vue.component('product', {
+            props: ['price', 'name', 'src'],
+            template: `
+                <div class="card">
+                    <a href="#"><img :src="src" alt="card3" class="card-img"></a>
+                    <div class="card-text">
+                        <h6 class="card-heading">{{name}}</h6>
+                        <p class="text">Known for her sculptural takes on traditional tailoring, Australian arbiter of
+                            cool
+                            Kym
+                            Ellery teams up with Moda Operandi.</p>
+                        <p class="card-price">$ {{ price }}</p>
+                    </div>
+                </div>
+            `
+        }),
+
+            new Vue({
+                el: "#app",
+                data: {
+                    products: [
+                        { name: "Tshirt", price: 52.00, srcImg: "image/image_catalog/card_catalog1.jpg" },
+                        { name: "Shirt", price: 33.00, srcImg: "image/image_catalog/card_catalog2.jpg" },
+                        { name: "Skirt", price: 20.00, srcImg: "image/image_catalog/card_catalog3.jpg" },
+                        { name: "Tshirt", price: 45.00, srcImg: "image/image_catalog/card_catalog4.jpg" },
+                        { name: "Tshirt", price: 34.00, srcImg: "image/image_catalog/card_catalog5.jpg" },
+                        { name: "Tshirt", price: 58.00, srcImg: "image/image_catalog/card_catalog6.jpg" }
+                    ]
+                },
+                computed: {
+                    sortedUp() {
+                        return this.products.sort((a, b) => a.price > b.price ? 1 : -1)
+                    },
+
+                    sortedDown() {
+                        return this.products.sort((a, b) => a.price > b.price ? -1 : 1)
+                    }
+                },
+            })
+    </script>
+</body>
+
+</html>
