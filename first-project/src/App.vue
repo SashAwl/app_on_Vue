@@ -6,7 +6,8 @@
     <CreditCalc/>
     <UserList :userOne="this.userList"/>
     <ProductDetails/>
-    <SliderCat/>
+    <ProductCart/>
+    <!-- <SliderCat/> -->
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import AuthenticationForm from './components/AuthenticationForm.vue'
 import UserList from './components/UserList.vue'
 import CreditCalc from './components/CreditCalc.vue'
 import ProductDetails from './components/ProductDetails.vue'
+import ProductCart from './components/ProductCart.vue'
 
 export default {
   name: 'App',
@@ -26,7 +28,8 @@ export default {
     AuthenticationForm,
     UserList,
     CreditCalc,
-    ProductDetails
+    ProductDetails,
+    ProductCart
   },
   data () {
     return {
