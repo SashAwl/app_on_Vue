@@ -13,7 +13,7 @@ export default {
   props: ['productItem'],
   data () {
     return {
-      currentCount: 0,
+      currentCount: 0
 
     }
   },

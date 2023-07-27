@@ -2,7 +2,7 @@
     <div class="block">
         <h3>Продуктовая корзина</h3>
         <div class="cards">
-            <ProductCartItem v-for="(product,index) in products" :key="product.index" 
+            <ProductCartItem v-for="(product,index) in products" :key="product.index"
               :productItem="product" @changeData="getDataProduct(index,$event)"/>
         </div>
         <p>Общая стоимость товара {{ getTotalSum }} </p>
@@ -23,17 +23,17 @@ export default {
         { name: 'Shirt', price: 30, quantity: 0 },
         { name: 'Skirt', price: 50, quantity: 0 },
         { name: 'T-Shirt', price: 30, quantity: 0 }
-      ],
+      ]
     }
   },
   computed: {
     getTotalSum () {
-        return this.products.reduce((sum, item) => sum + item.price * item.quantity, 0)
+      return this.products.reduce((sum, item) => sum + item.price * item.quantity, 0)
     }
   },
   methods: {
     getDataProduct (index, data) {
-        this.products[index].quantity = data
+      this.products[index].quantity = data
     }
   }
 }

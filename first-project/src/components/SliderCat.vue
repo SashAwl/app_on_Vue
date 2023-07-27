@@ -2,7 +2,7 @@
   <div class="center">
     <img src="../assets/cat1.jpg" alt="cat" class="big-img">
     <div class="collection">
-      <img @click="makeBig" v-for="img in listImg" :key="img.id" :src="getImgUrl(img)" alt="cat" class="cat-item">
+      <img @click="makeBig" v-for="img in listImg" :key="img.id" :src="img" alt="cat" class="cat-item">
     </div>
   </div>
 </template>
@@ -13,17 +13,13 @@ export default {
   props: {},
   data () {
     return {
-      listImg: ['cat1.jpg', 'cat2.jpg', 'cat3.jpg'],
+      listImg: ['https://img.freepik.com/premium-photo/cat-hide-seek-white-background-with-copyspace_71163-532.jpg?w=740', 'cat2.jpg', 'cat3.jpg'],
       currentImg: 6
     }
   },
   methods: {
     makeBig () {
 
-    },
-    getImgUrl (img) {
-      console.log(`../assets/${img}`)
-      return `../assets/${img}`
     }
   }
 }

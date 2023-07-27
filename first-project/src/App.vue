@@ -7,7 +7,7 @@
     <UserList :userOne="this.userList"/>
     <ProductDetails/>
     <ProductCart/>
-    <!-- <SliderCat/> -->
+    <SliderCat/>
   </div>
 </template>
 
